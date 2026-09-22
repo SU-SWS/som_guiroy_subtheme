@@ -20,5 +20,12 @@
 // Config and supporting scss.
 
 // Components.
-// @import 'component-name/index';
+@import 'masthead/masthead';
+@import 'main-nav/main-nav';
+@import 'local-footer/local-footer';
+
+// Paragraph variants (see som_guiroy_subtheme.react_behaviors.yml).
+@import 'card/card--gradient';
+@import 'text-area/text-area--guiroy';
+@import 'banner/banner--hero';
 

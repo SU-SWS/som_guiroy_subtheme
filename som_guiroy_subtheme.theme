@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * @file
+ * Preprocess functions for SOM Guiroy Lab.
+ */
+
+use Drupal\Core\Template\Attribute;
+use Drupal\paragraphs\ParagraphInterface;
+
+/**
+ * Prepares variables for the html.html.twig template.
+ */
+function som_guiroy_subtheme_preprocess_html(&$variables) {
+  $variables['stanford_basic_path'] = \Drupal::service('extension.list.theme')->getPath('stanford_basic');
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function som_guiroy_subtheme_theme_suggestions_block_alter(array &$suggestions, array $variables) {
+  if (!empty($variables['elements']['#id']) && $variables['elements']['#id'] == 'som_guiroy_subtheme_search') {
+    $suggestions[] = 'block__stanford_basic_search';
+  }
+}
+
+/**
+ * Paragraph variant settings, keyed by bundle.
+ *
+ * Each entry is [plugin id, setting key] as declared in
+ * som_guiroy_subtheme.react_behaviors.yml.
+ */
+function _som_guiroy_subtheme_variant_settings() {
+  return [
+    'stanford_card' => ['react_paragraphs:card_variant_info', 'card_variant'],
+    'stanford_wysiwyg' => ['react_paragraphs:wysiwyg_variant_info', 'wysiwyg_variant'],
+    'stanford_banner' => ['react_paragraphs:banner_variant_info', 'banner_variant'],
+  ];
+}
+
+/**
+ * Returns the variant class chosen for a paragraph, if any.
+ */
+function _som_guiroy_subtheme_variant_class(ParagraphInterface $paragraph) {
+  $settings = _som_guiroy_subtheme_variant_settings();
+  $bundle = $paragraph->bundle();
+  if (!isset($settings[$bundle])) {
+    return NULL;
+  }
+  [$plugin_id, $key] = $settings[$bundle];
+  $class = $paragraph->getBehaviorSetting($plugin_id, $key);
+  return is_string($class) && $class !== '' ? $class : NULL;
+}
+
+/**
+ * Adds a class to attributes that may be an array or an Attribute object.
+ */
+function _som_guiroy_subtheme_add_class(&$attributes, $class) {
+  if ($attributes instanceof Attribute) {
+    $attributes->addClass($class);
+    return;
+  }
+  $attributes = is_array($attributes) ? $attributes : [];
+  $attributes['class'][] = $class;
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for paragraph templates.
+ */
+function som_guiroy_subtheme_preprocess_paragraph(&$variables) {
+  $paragraph = $variables['paragraph'] ?? NULL;
+  if (!$paragraph instanceof ParagraphInterface) {
+    return;
+  }
+  if ($class = _som_guiroy_subtheme_variant_class($paragraph)) {
+    _som_guiroy_subtheme_add_class($variables['attributes'], $class);
+  }
+}

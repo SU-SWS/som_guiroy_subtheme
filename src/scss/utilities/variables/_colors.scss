@@ -1,7 +1,29 @@
 @charset "UTF-8";
 /* Subtheme Specific colors, Stanford/Decanter colors are not defined here */
 
-// All variable names should be prefaced with your abbreviation (saa, soe, ood, etc)
+// Guiroy Lab brand tokens, taken from the Figma "Foundations — Colour" frame.
+// Figma token names are noted next to each variable.
 
-// define colors here in the format of:
-//$abbreviation-color-pink: #ff0099; // like $saa-color-pink
+$gry-color-navy:        #3c435e; // brand/navy, text/primary
+$gry-color-navy-dark:   #403c47; // brand/navy-dark (local footer)
+$gry-color-plum:        #4a4b7b; // brand/plum, border/strong
+$gry-color-plum-700:    #8081a3; // brand/plum/700 (nav divider)
+$gry-color-plum-500:    #a4a5bd; // brand/plum/500
+$gry-color-plum-300:    #c9c9d7; // brand/plum/300
+$gry-color-pink:        #c8acb5; // brand/pink
+$gry-color-pink-light:  #ecd9df; // brand/pink-light (card gradient top)
+$gry-color-pink-dark:   #a98bad; // brand/pink-dark (card gradient bottom)
+$gry-color-orange:      #fdbe83; // brand/orange (button outline)
+$gry-color-cream:       #fde9cc; // brand/cream
+$gry-color-blue:        #2f4e68; // brand/blue
+$gry-color-section:     #f0e5ef; // fill/section/tertiary
+$gry-color-white:       #fff;    // surface/page, text/inverse
+
+// Hero gradient stops (Section / Hero).
+$gry-hero-gradient: linear-gradient(
+  180deg,
+  $gry-color-navy 0%,
+  $gry-color-navy 42%,
+  #8e7ea0 80%,
+  $gry-color-pink-dark 100%
+);

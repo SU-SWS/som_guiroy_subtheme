@@ -1,16 +1,65 @@
 @charset "UTF-8";
 
-// Define button mixins here
-// Example: All mixin names should be prefaced with your abbreviation (saa, soe, ood, etc)
+// Guiroy Lab pill buttons (Figma "Button / primary" and "Button / secondary").
+// Both are 3px orange-outlined pills with a trailing arrow; primary has a
+// plum -> pink-dark gradient fill, secondary is white.
 
-//@mixin example-button--gray {
-  // button colors here
+@mixin gry-button-base {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 1.5rem 2.6rem 1.5rem 3rem;
+  border: 3px solid $gry-color-orange;
+  border-radius: 999px;
+  font-family: $gry-font-sans;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 
-  /* don't forget to include decanter icon color overrides too;
-  ** if you override a link color, you must also override the :after psuedo element
-  ** so decanter icons correspond to the link color.
-  */
+  // Trailing arrow (Figma "Icon / Arrow Right", 20x14), painted with
+  // currentColor so it follows the label colour.
+  &::after {
+    content: "";
+    display: inline-block;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 1.4rem;
+    margin: 0;
+    background-color: currentColor;
+    mask: url('../assets/arrow-right.svg') no-repeat center / contain;
+    transform: none;
+  }
 
-  // Include the correct icon color mixin inside your mixins here
-  //@include example--black-icons
-//}
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+@mixin gry-button--primary {
+  @include gry-button-base;
+
+  background: linear-gradient(90deg, $gry-color-plum 31.25%, $gry-color-pink-dark 100%);
+  color: $gry-color-white;
+
+  &:hover,
+  &:focus {
+    background: $gry-color-plum;
+    color: $gry-color-white;
+  }
+}
+
+@mixin gry-button--secondary {
+  @include gry-button-base;
+
+  background: $gry-color-white;
+  color: $gry-color-navy;
+
+  &:hover,
+  &:focus {
+    background: $gry-color-navy;
+    color: $gry-color-white;
+  }
+}

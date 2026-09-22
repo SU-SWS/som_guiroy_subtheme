@@ -1,0 +1,46 @@
+# Paragraph variant dropdowns shown to authors in the paragraph editor.
+# Option keys are the CSS classes added to the paragraph and are stored in
+# each paragraph's behavior settings: NEVER rename a key, only its label.
+# Variants do not preview in the editor (Claro/Gin); check the page itself.
+
+card_variant_info:
+  id: card_variant
+  label: 'Card Style'
+  bundles:
+    - paragraphs_type|stanford_card
+  config:
+    card_variant:
+      type: select
+      title: 'Card Style'
+      description: 'Gradient: pink-to-mauve gradient card with rounded corners, navy text and a white pill button. The image, if any, sits on top.'
+      empty_option: Default
+      options:
+        gry-card--gradient: Gradient
+
+wysiwyg_variant_info:
+  id: wysiwyg_variant
+  label: 'Text Area Style'
+  bundles:
+    - paragraphs_type|stanford_wysiwyg
+  config:
+    wysiwyg_variant:
+      type: select
+      title: 'Text Area Style'
+      description: 'Guiroy: all text navy, headings and display styles (Splash, Callout, Drop cap, Quote) in Space Grotesk, body in Source Sans, pill buttons.'
+      empty_option: Default
+      options:
+        gry-text-area--guiroy: Guiroy
+
+banner_variant_info:
+  id: banner_variant
+  label: 'Banner Style'
+  bundles:
+    - paragraphs_type|stanford_banner
+  config:
+    banner_variant:
+      type: select
+      title: 'Banner Style'
+      description: 'Gradient hero: navy-to-mauve gradient instead of the image. The Headline becomes the oversized wordmark and the Body text the mission line underneath. Keep the headline short (for example "GUIROY LAB").'
+      empty_option: Default
+      options:
+        gry-banner--hero: Gradient hero

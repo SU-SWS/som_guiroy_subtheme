@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+// Figma "Section / Site Header": navy bar, white Space Grotesk wordmark,
+// white Source Sans nav links right-aligned beneath it.
+
+.su-masthead {
+  background-color: $gry-color-navy;
+
+  .su-masthead--inner {
+    padding-top: 2.2rem;
+    padding-bottom: 1.6rem;
+  }
+
+  // Site lockup ("Guiroy Lab").
+  .su-lockup {
+    a,
+    a:hover,
+    a:focus {
+      color: $gry-color-white;
+      text-decoration: none;
+    }
+
+    .su-lockup__wordmark,
+    [class*='su-lockup__line'] {
+      color: $gry-color-white;
+    }
+
+    .su-lockup__cell2 [class*='su-lockup__line'] {
+      font-family: $gry-font-display;
+      font-weight: 400;
+      font-size: 2.7rem;
+      line-height: 1.2;
+    }
+
+    // The divider between "Stanford" and the site name is black by default.
+    .su-lockup__cell1 {
+      border-right-color: $gry-color-white;
+    }
+
+    .su-lockup__cell2 {
+      border-left-color: $gry-color-white;
+    }
+  }
+}
