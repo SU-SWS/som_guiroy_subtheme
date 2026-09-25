@@ -95,14 +95,24 @@
     }
   }
 
+  // Footer content fields are WYSIWYG, so undo the navy WYSIWYG defaults
+  // (components/wysiwyg) with higher-specificity white.
   .su-local-footer__list-heading,
+  .su-local-footer__columns .text-long,
   .su-local-footer__columns p,
-  .su-local-footer__columns li {
+  .su-local-footer__columns li,
+  .su-local-footer__columns blockquote,
+  .su-local-footer__columns h2,
+  .su-local-footer__columns h3,
+  .su-local-footer__columns h4,
+  .su-local-footer__columns h5,
+  .su-local-footer__columns h6 {
     color: $gry-color-white;
   }
 
   // Links in the footer columns. The extra class beats the base footer
-  // link colours.
+  // link colours; it ties the WYSIWYG link rule (0,4,1) and wins because
+  // this partial is imported after components/wysiwyg.
   .su-local-footer__columns a:not(.su-button):not(.su-button--secondary) {
     color: $gry-color-white;
     font-size: 1.6rem;

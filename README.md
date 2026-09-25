@@ -19,10 +19,10 @@ Option keys are stored on each paragraph, so never rename one.
 | Paragraph | Option | Class | SCSS |
 |---|---|---|---|
 | Card | Gradient | `gry-card--gradient` | `card/_card--gradient.scss` |
-| Text Area | Guiroy | `gry-text-area--guiroy` | `text-area/_text-area--guiroy.scss` |
 | Banner | Gradient hero | `gry-banner--hero` | `banner/_banner--hero.scss` |
 
-Site-wide restyles: masthead (`masthead/`), main nav (`main-nav/`), local footer (`local-footer/`).
+Site-wide restyles: WYSIWYG text (`wysiwyg/`, every `.text-long` / `.text-with-summary` field and the
+CKEditor content area), masthead (`masthead/`), main nav (`main-nav/`), local footer (`local-footer/`).
 Brand tokens are in `src/scss/utilities/variables/`. Space Grotesk loads from Google Fonts via the
 `fonts` library.
 

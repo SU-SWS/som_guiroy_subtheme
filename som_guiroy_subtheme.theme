@@ -33,7 +33,6 @@ function som_guiroy_subtheme_theme_suggestions_block_alter(array &$suggestions, 
 function _som_guiroy_subtheme_variant_settings() {
   return [
     'stanford_card' => ['react_paragraphs:card_variant_info', 'card_variant'],
-    'stanford_wysiwyg' => ['react_paragraphs:wysiwyg_variant_info', 'wysiwyg_variant'],
     'stanford_banner' => ['react_paragraphs:banner_variant_info', 'banner_variant'],
   ];
 }

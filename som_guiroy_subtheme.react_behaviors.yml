@@ -17,20 +17,6 @@ card_variant_info:
       options:
         gry-card--gradient: Gradient
 
-wysiwyg_variant_info:
-  id: wysiwyg_variant
-  label: 'Text Area Style'
-  bundles:
-    - paragraphs_type|stanford_wysiwyg
-  config:
-    wysiwyg_variant:
-      type: select
-      title: 'Text Area Style'
-      description: 'Guiroy: all text navy, headings and display styles (Splash, Callout, Drop cap, Quote) in Space Grotesk, body in Source Sans, pill buttons.'
-      empty_option: Default
-      options:
-        gry-text-area--guiroy: Guiroy
-
 banner_variant_info:
   id: banner_variant
   label: 'Banner Style'
