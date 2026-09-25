@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+// Guiroy WYSIWYG typography. Applied to every formatted-text field on the
+// site (components/wysiwyg) and to the CKEditor content area (ckeditor5.scss).
+// All type navy. Headings and display styles in Space Grotesk; body stays
+// Source Sans 3. Heading weights follow the Figma "Text-area" frame
+// (Regular); display styles keep their base weights. Sizes come from the
+// base theme.
+
+@mixin gry-wysiwyg {
+  &,
+  p,
+  li,
+  dt,
+  dd,
+  td,
+  th,
+  caption,
+  blockquote,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $gry-color-navy;
+  }
+
+  p,
+  li,
+  dt,
+  dd,
+  td,
+  th {
+    font-family: $gry-font-sans;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: $gry-font-display;
+    font-weight: 400;
+  }
+
+  // Display styles from the editor's Styles menu. Font family only; the
+  // base theme's weights and sizes are kept.
+  .su-font-splash,
+  .su-callout-text,
+  .su-quote-text,
+  blockquote,
+  .su-drop-cap::first-letter {
+    font-family: $gry-font-display;
+  }
+
+  // Figma "Quote": 3px left rule.
+  .su-quote-text,
+  blockquote {
+    border-left-color: $gry-color-navy;
+  }
+
+  hr {
+    border-color: $gry-color-plum-300;
+  }
+
+  // Inline links (not buttons).
+  a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
+    color: $gry-color-navy;
+    text-decoration: underline;
+
+    &::after {
+      background-color: currentColor;
+    }
+
+    &:hover,
+    &:focus {
+      color: $gry-color-plum;
+    }
+  }
+
+  // Editor button styles become the Guiroy pills.
+  a.su-button,
+  a.su-button--big {
+    @include gry-button--primary;
+  }
+
+  a.su-button--big {
+    padding: 1.8rem 3rem 2rem 3.4rem;
+    font-size: 2rem;
+  }
+
+  a.su-button--secondary {
+    @include gry-button--secondary;
+  }
+}

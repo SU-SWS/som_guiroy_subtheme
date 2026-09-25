@@ -100,3 +100,8 @@ allpages:
 #    state:
 #      dist/css/state.css: {}
 
+
+fonts:
+  css:
+    base:
+      'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap': { type: external }
