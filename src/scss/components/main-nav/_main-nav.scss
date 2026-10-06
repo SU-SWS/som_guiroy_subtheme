@@ -1,0 +1,170 @@
+@charset "UTF-8";
+
+// Figma "Nav Link" (node 5:8): Source Sans 3 SemiBold 17px.
+// - Default: white.
+// - Active (current page): white, 3px plum-600 bottom border on the link.
+// - Hover/focus: orange text with a 1px orange underline.
+// The base theme switches to the desktop nav at 992px (lg).
+//
+// Stanford Sites has two main-menu renderers; both are styled here:
+// 1. Preact "new menu" (nav.preact-main-menu), used by this site. It is
+//    styled with styled-components: hashed single-class rules (0,1,0),
+//    injected at runtime after our CSS, with digital-red desktop links. Every
+//    rule below is anchored on .su-masthead + nav.preact-main-menu (0,2,1+)
+//    so it wins on specificity, not on source order.
+//    DOM: nav > div > ul (top list) > li > div > [a | span] + div (divider)
+//         + button (submenu toggle) ; li > ul (submenu) > li > div > a
+// 2. Classic Twig menu (.su-multi-menu), kept in case the site setting is
+//    switched back.
+
+// ---------------------------------------------------------------------------
+// 1. Preact main menu.
+// ---------------------------------------------------------------------------
+
+.su-masthead nav.preact-main-menu {
+  // Mobile "Menu"/"Close" toggle sits on the navy bar (base is dark grey).
+  > button {
+    color: $gry-color-white;
+
+    &:hover,
+    &:focus {
+      color: $gry-color-orange;
+    }
+  }
+
+  @include grid-media-min('lg') {
+    // Top-level items only: the top list's li > div > a|span.
+    > div > ul > li > div {
+      > a,
+      > span {
+        margin-bottom: 0;
+        padding: 0.6rem 0.6rem 0.3rem 1rem;
+        border-bottom: 3px solid transparent;
+        color: $gry-color-white;
+        font-family: $gry-font-sans;
+        font-size: 1.7rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-decoration: none;
+      }
+
+      > a {
+        &[aria-current='page'] {
+          border-bottom-color: $gry-color-plum-600;
+        }
+
+        &:hover,
+        &:focus {
+          color: $gry-color-orange;
+          text-decoration: underline;
+          text-decoration-color: $gry-color-orange;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 0.3em;
+        }
+      }
+
+      // Divider between a parent link and its submenu toggle.
+      > div {
+        background: $gry-color-plum-700;
+      }
+
+      // Submenu toggle: plum chevron, orange on hover.
+      > button {
+        color: $gry-color-plum-500;
+
+        &:hover,
+        &:focus {
+          border-bottom-color: $gry-color-orange;
+          color: $gry-color-orange;
+        }
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 2. Classic multi-menu.
+// ---------------------------------------------------------------------------
+
+// Mobile: the toggle button sits on the navy bar, so make it white. The
+// expanded panel keeps the base theme's white background and dark links.
+@include grid-media-max('md') {
+  .su-masthead .su-multi-menu .su-multi-menu__nav-toggle {
+    color: $gry-color-white;
+
+    &::before,
+    &::after {
+      background-color: $gry-color-white;
+    }
+
+    &:hover,
+    &:focus,
+    &[aria-expanded='true'] {
+      color: $gry-color-orange;
+
+      &::before,
+      &::after {
+        background-color: $gry-color-orange;
+      }
+    }
+  }
+}
+
+@include grid-media-min('lg') {
+  // The base active-trail/current rules reach (0,5,0), (0,6,0) with :hover;
+  // the extra .su-masthead keeps every rule here above them.
+  .su-masthead .su-multi-menu .su-multi-menu__menu-lv1 {
+    > .su-multi-menu__item {
+      > .su-multi-menu__link {
+        padding: 0.6rem 0.6rem 0.3rem 1rem;
+        border-bottom: 3px solid transparent;
+        color: $gry-color-white;
+        font-family: $gry-font-sans;
+        font-size: 1.7rem;
+        font-weight: 600;
+        line-height: 1.2;
+        text-decoration: none;
+
+        // Base theme's active-page bar; replaced by the bottom border.
+        &::before {
+          content: none;
+        }
+
+        &:hover,
+        &:focus {
+          color: $gry-color-orange;
+          text-decoration: underline;
+          text-decoration-color: $gry-color-orange;
+          text-decoration-thickness: 1px;
+          text-underline-offset: 0.3em;
+        }
+      }
+
+      &.su-multi-menu__item--active-trail,
+      &.su-multi-menu__item--current {
+        > .su-multi-menu__link {
+          color: $gry-color-white;
+
+          &:hover,
+          &:focus {
+            color: $gry-color-orange;
+          }
+        }
+      }
+
+      &.su-multi-menu__item--current > .su-multi-menu__link {
+        border-bottom-color: $gry-color-plum-600;
+      }
+
+      // Dropdown toggle: plum chevron (Figma "Icon / Chevron Down").
+      > .su-nav-toggle {
+        &::before,
+        &:hover::before,
+        &:focus::before {
+          background: transparent url('../assets/chevron-down.svg') no-repeat center / 1.2rem 0.8rem;
+          mask: none;
+        }
+      }
+    }
+  }
+}

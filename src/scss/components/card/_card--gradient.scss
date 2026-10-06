@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+// Card paragraph, "Gradient" variant (Figma "Embed card").
+// Markup (jumpstart_ui:card): the image is a sibling of .su-card__contents,
+// and the superhead renders AFTER the heading in the DOM, so it is moved
+// above the heading with flex order.
+
+.ptype-stanford-card.gry-card--gradient {
+  height: 100%;
+
+  .su-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.12); // Figma "Shallow"
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .su-card__contents {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    padding: 3.8rem 3.8rem 4.8rem;
+    background: linear-gradient(to bottom, $gry-color-pink-light, $gry-color-pink-dark);
+    color: $gry-color-navy;
+
+    > * {
+      width: 100%;
+    }
+
+    h2,
+    h3 {
+      order: 1;
+      margin: 0 0 1.9rem;
+      color: $gry-color-navy;
+      font-family: $gry-font-display;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+  }
+
+  .su-card__superhead {
+    order: 0;
+    margin: 0;
+    padding-bottom: 0.5rem;
+    color: $gry-color-navy;
+    font-family: $gry-font-sans;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1.4;
+    text-transform: none;
+  }
+
+  .su-card-body {
+    order: 2;
+    color: $gry-color-navy;
+    font-family: $gry-font-sans;
+    font-size: 2.1rem;
+    line-height: 1.4;
+
+    p {
+      color: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+
+    > :last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .su-card__button,
+  .su-card__link {
+    order: 3;
+  }
+
+  .su-card__button {
+    width: auto;
+    margin: 0;
+    padding-top: 2.7rem;
+
+    .su-button {
+      @include gry-button--secondary;
+    }
+  }
+
+  // "Action link" link style.
+  .su-card__link {
+    width: auto;
+    margin-top: 2.7rem;
+    color: $gry-color-navy;
+    font-weight: 600;
+
+    &::after {
+      background-color: currentColor;
+    }
+
+    &:hover,
+    &:focus {
+      color: $gry-color-plum;
+    }
+  }
+}

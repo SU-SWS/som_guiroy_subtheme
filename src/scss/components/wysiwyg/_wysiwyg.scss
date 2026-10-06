@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+// Default styling for every WYSIWYG (formatted text) field: the Text Area
+// paragraph, node body fields, card/banner body text, etc. stanford_basic
+// adds the field type as a class to every field wrapper.
+// Components on dark backgrounds (local footer, gradient hero) override
+// these colours in their own partials, which are imported after this one.
+
+.text-long,
+.text-with-summary {
+  @include gry-wysiwyg;
+}

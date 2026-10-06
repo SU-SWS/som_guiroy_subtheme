@@ -1,4 +1,4 @@
-# [Stanford Starter](https://github.com/SU-SWS/stanford_starter)
+# [Stanford Starter](https://github.com/SU-SWS/som_guiroy_subtheme)
 ##### Version: 8.x-1.0-dev
 
 Changelog: [Changelog.txt](CHANGELOG.txt)
@@ -6,7 +6,27 @@ Changelog: [Changelog.txt](CHANGELOG.txt)
 Description
 ---
 
-Stanford Starter is a Stanford sub-theme that works with the Stanford Basic theme.
+SOM Guiroy Lab is a Stanford sub-theme of Stanford Basic, styled from the Guiroy Figma file
+(https://www.figma.com/design/ajlzwReUJEX0qbyWVYG8jE/Guiroy).
+
+Paragraph variants
+---
+
+Declared in `som_guiroy_subtheme.react_behaviors.yml`, applied in `som_guiroy_subtheme.theme`,
+styled in `src/scss/components/`. Variants do not preview in the paragraph editor; check the page.
+Option keys are stored on each paragraph, so never rename one.
+
+| Paragraph | Option | Class | SCSS |
+|---|---|---|---|
+| Card | Gradient | `gry-card--gradient` | `card/_card--gradient.scss` |
+| Banner | Gradient hero | `gry-banner--hero` | `banner/_banner--hero.scss` |
+
+Site-wide restyles: WYSIWYG text (`wysiwyg/`, every `.text-long` / `.text-with-summary` field and the
+CKEditor content area), masthead (`masthead/`), main nav (`main-nav/`), local footer (`local-footer/`).
+Brand tokens are in `src/scss/utilities/variables/`. Space Grotesk loads from Google Fonts via the
+`fonts` library.
+
+After changing `react_behaviors.yml`, clear caches (`drush cr`).
 
 Documentation
 ---
@@ -17,8 +37,8 @@ Installation
 ---
 1. Review the documentation link above for best practices, particularly the Do's and Don't's sections.
 2. Fork or download this theme repository. 
-3. Change all theme file names from including "stanford_starter" to including the machine name of your theme.
-4. Run a search and replace throughout the theme files to replace "stanford_starter" with the machine name of your theme.
+3. Change all theme file names from including "som_guiroy_subtheme" to including the machine name of your theme.
+4. Run a search and replace throughout the theme files to replace "som_guiroy_subtheme" with the machine name of your theme.
 5. Add any specific brand colors you need (in addition to the decanter colors that are already available) to src/scss/utilities/variables/_colors.scss. 
 See all the colors already available through decanter: https://decanter.stanford.edu/page/brand-design-elements-color/ 
 6. If desired, add font settings if you need to override and use fonts other than decanter fonts ( https://decanter.stanford.edu/page/brand-design-elements-typography/ ) [link],

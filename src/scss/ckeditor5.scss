@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// Loaded into the CKEditor 5 content area (ckeditor5-stylesheets in
+// som_guiroy_subtheme.info.yml) so authors see the Guiroy WYSIWYG type.
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+@import './utilities/index';
+
+.ck-content {
+  @include gry-wysiwyg;
+}

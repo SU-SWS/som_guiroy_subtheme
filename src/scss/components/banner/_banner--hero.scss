@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+// Banner paragraph, "Gradient hero" variant (Figma "Section / Hero").
+// Replaces the image with the navy -> mauve gradient. The hero card's
+// headline becomes the oversized wordmark and its body the mission line.
+// Markup (jumpstart_ui:hero):
+//   .su-hero > .su-hero__media + article.su-card.su-hero__card > .su-card__contents
+
+.ptype-stanford-banner.gry-banner--hero {
+  .su-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 56rem;
+    padding: 12rem 2rem 5.4rem;
+    overflow: hidden;
+    background: $gry-hero-gradient;
+    color: $gry-color-white;
+    text-align: center;
+  }
+
+  // The gradient replaces the image.
+  .su-hero__media {
+    display: none;
+  }
+
+  // Undo the base overlay-card positioning, background and shadow.
+  .su-hero__card {
+    position: static;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    color: $gry-color-white;
+    transform: none;
+  }
+
+  .su-card__contents {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .su-card__superhead {
+    margin-bottom: 1rem;
+    color: $gry-color-white;
+    font-family: $gry-font-sans;
+    font-size: 1.9rem;
+    font-weight: 700;
+  }
+
+  // Display/Wordmark: Space Grotesk Bold 216px at 1440px, -2% tracking.
+  h2,
+  h3 {
+    margin: 0;
+    color: $gry-color-white;
+    font-family: $gry-font-display;
+    font-size: clamp(6.4rem, 15vw, 21.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+
+    // Figma lets the wordmark run to the section edge; on phones let it wrap.
+    @include grid-media-min('md') {
+      white-space: nowrap;
+    }
+  }
+
+  // Display/Mission: Space Grotesk Regular 34px / 1.4, ~733px wide.
+  .su-banner-body {
+    max-width: 73.3rem;
+    margin: 0 auto;
+    color: $gry-color-white;
+    font-family: $gry-font-display;
+    font-size: clamp(2.2rem, 2.4vw, 3.4rem);
+    font-weight: 400;
+    line-height: 1.4;
+
+    // The WYSIWYG defaults set Source Sans and navy on p; keep the mission line.
+    p {
+      margin-bottom: 0;
+      color: inherit;
+      font-family: inherit;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+
+  .su-card__button {
+    margin: 3rem 0 0;
+
+    .su-button {
+      @include gry-button--primary;
+    }
+  }
+}

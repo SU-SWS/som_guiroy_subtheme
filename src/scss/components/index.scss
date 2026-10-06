@@ -20,5 +20,13 @@
 // Config and supporting scss.
 
 // Components.
-// @import 'component-name/index';
+// WYSIWYG defaults first: dark-background components below override them.
+@import 'wysiwyg/wysiwyg';
+@import 'masthead/masthead';
+@import 'main-nav/main-nav';
+@import 'local-footer/local-footer';
+
+// Paragraph variants (see som_guiroy_subtheme.react_behaviors.yml).
+@import 'card/card--gradient';
+@import 'banner/banner--hero';
 

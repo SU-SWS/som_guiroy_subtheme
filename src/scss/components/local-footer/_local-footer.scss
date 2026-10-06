@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+// Figma "Section / Local Footer": dark navy band. Utility row (wordmark +
+// Web Login button) above the address; all text white.
+
+.su-local-footer {
+  padding-top: 4.6rem;
+  padding-bottom: 6.4rem;
+  background-color: $gry-color-navy-dark;
+  color: $gry-color-white;
+  font-family: $gry-font-sans;
+
+  // Utility row: lockup left, Web Login right.
+  .su-local-footer__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 6rem;
+
+    .su-lockup {
+      a,
+      a:hover,
+      a:focus {
+        color: $gry-color-white;
+        text-decoration: none;
+      }
+
+      .su-lockup__wordmark,
+      [class*='su-lockup__line'] {
+        color: $gry-color-white;
+      }
+
+      .su-lockup__cell2 [class*='su-lockup__line'] {
+        font-family: $gry-font-display;
+        font-weight: 400;
+        font-size: 2.7rem;
+        line-height: 1.2;
+      }
+
+      .su-lockup__cell1 {
+        border-right-color: $gry-color-white;
+      }
+
+      .su-lockup__cell2 {
+        border-left-color: $gry-color-white;
+      }
+    }
+
+    // Web Login (Figma "Button / Primary"): navy, 1px plum border, lock icon.
+    a.su-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.9rem;
+      padding: 1.1rem 1.8rem 1.1rem 2rem;
+      border: 1px solid $gry-color-plum;
+      border-radius: 4px;
+      background-color: $gry-color-navy;
+      color: $gry-color-white;
+      font-size: 1.7rem;
+      font-weight: 600;
+      line-height: 1.2;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 1.2rem;
+        height: 1.4rem;
+        margin: 0;
+        background-color: currentColor;
+        mask: url('../assets/lock.svg') no-repeat center / contain;
+        transform: none;
+      }
+
+      &:hover,
+      &:focus {
+        background-color: $gry-color-plum;
+        color: $gry-color-white;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Address: Label/Footer (16px / 1.5); the first line is the bold name.
+  .su-local-footer__address {
+    color: $gry-color-white;
+    font-size: 1.6rem;
+    font-style: normal;
+    line-height: 1.5;
+
+    &::first-line {
+      font-weight: 700;
+    }
+  }
+
+  // Footer content fields are WYSIWYG, so undo the navy WYSIWYG defaults
+  // (components/wysiwyg) with higher-specificity white.
+  .su-local-footer__list-heading,
+  .su-local-footer__columns .text-long,
+  .su-local-footer__columns p,
+  .su-local-footer__columns li,
+  .su-local-footer__columns blockquote,
+  .su-local-footer__columns h2,
+  .su-local-footer__columns h3,
+  .su-local-footer__columns h4,
+  .su-local-footer__columns h5,
+  .su-local-footer__columns h6 {
+    color: $gry-color-white;
+  }
+
+  // Links in the footer columns. The extra class beats the base footer
+  // link colours; it ties the WYSIWYG link rule (0,4,1) and wins because
+  // this partial is imported after components/wysiwyg.
+  .su-local-footer__columns a:not(.su-button):not(.su-button--secondary) {
+    color: $gry-color-white;
+    font-size: 1.6rem;
+    line-height: 1.5;
+
+    &::after {
+      background-color: currentColor;
+    }
+
+    &:hover,
+    &:focus {
+      color: $gry-color-orange;
+    }
+  }
+}
