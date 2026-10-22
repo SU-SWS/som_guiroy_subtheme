@@ -77,12 +77,12 @@
     color: $gry-color-navy;
     text-decoration: underline;
 
-    &::before,
     &::after,
-    &:hover::before,
     &:hover::after,
-    &:focus::before,
-    &:focus::after {
+    &:focus::after,
+    &[class*='su-link--']::before,
+    &[class*='su-link--']:hover::before,
+    &[class*='su-link--']:focus::before {
       background-color: $gry-color-plum;
     }
 
@@ -107,8 +107,8 @@
     a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
       color: $gry-color-plum;
 
-      &::before,
-      &::after {
+      &::after,
+      &[class*='su-link--']::before {
         background-color: $gry-color-plum;
       }
 
@@ -120,8 +120,8 @@
       &:focus {
         color: $gry-color-lavendar-150;
 
-        &::before,
-        &::after {
+        &::after,
+        &[class*='su-link--']::before {
           background-color: $gry-color-lavendar-150;
         }
 

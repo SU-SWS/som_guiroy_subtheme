@@ -110,21 +110,49 @@
     color: $gry-color-white;
   }
 
-  // Links in the footer columns. The extra class beats the base footer
-  // link colours; it ties the WYSIWYG link rule (0,4,1) and wins because
-  // this partial is imported after components/wysiwyg.
-  .su-local-footer__columns a:not(.su-button):not(.su-button--secondary) {
+  // Links in the footer columns: white text; any icon (Decanter mask icons
+  // on ::before/::after, mailto SVGs, Font Awesome <i>) follows the text
+  // colour, so it is white too. Orange on hover/focus.
+  // Specificity (0,5,1)+ beats every WYSIWYG link rule, including heading
+  // links and their :hover::after icons (up to (0,5,3)), because the footer
+  // content fields are WYSIWYG too.
+  .su-local-footer__columns a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
     color: $gry-color-white;
     font-size: 1.6rem;
     line-height: 1.5;
 
-    &::after {
+    &::after,
+    &:hover::after,
+    &:focus::after {
       background-color: currentColor;
+    }
+
+    // Decanter icons placed before the text. Limited to su-link-- links so
+    // Font Awesome glyphs (a.fab/a.fas use ::before) don't get a box.
+    &[class*='su-link--']::before,
+    &[class*='su-link--']:hover::before,
+    &[class*='su-link--']:focus::before {
+      background-color: currentColor;
+    }
+
+    svg,
+    &:hover svg,
+    &:focus svg {
+      fill: currentColor;
+    }
+
+    i {
+      color: inherit;
     }
 
     &:hover,
     &:focus {
       color: $gry-color-orange;
     }
+  }
+
+  // Links inside the footer's WYSIWYG content fields are underlined.
+  .su-local-footer__columns .text-long a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
+    text-decoration: underline;
   }
 }
