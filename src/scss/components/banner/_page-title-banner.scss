@@ -1,0 +1,7 @@
+@charset "UTF-8";
+
+// Page Title banner: opt its H1 out of the navy H1 colour (base/_headings)
+// so it keeps the banner's own colour.
+.ptype-stanford-page-title-banner h1 {
+  color: inherit;
+}

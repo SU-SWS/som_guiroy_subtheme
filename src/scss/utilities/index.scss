@@ -3,6 +3,7 @@
 // Import full scss version of decanter to use variables etc
 // @import 'decanter/core/src/scss/decanter-no-markup';
 
+// Variables first: mixins reference colour variables at the top level.
 @import
-'mixins/index',
-'variables/index';
+'variables/index',
+'mixins/index';

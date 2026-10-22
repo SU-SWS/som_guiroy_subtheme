@@ -1,25 +1,40 @@
 @charset "UTF-8";
 
-// Guiroy Lab pill buttons (Figma "Button / primary" and "Button / secondary").
-// Both are 3px orange-outlined pills with a trailing arrow; primary has a
-// plum -> pink-dark gradient fill, secondary is white.
+// Guiroy pill buttons (Figma "Button", node 121:519).
+// Both have a 3px gradient border and a trailing arrow. The border is drawn
+// as a second background layer behind a transparent border (fill clipped to
+// padding-box, border gradient on border-box), because border-image cannot
+// follow a border-radius.
+// Hover/focus ("hocus"): plum fill, white text and icon, border unchanged.
 
+$gry-button-border-primary:   linear-gradient(90deg, $gry-color-plum, $gry-color-pink, $gry-color-plum);
+$gry-button-border-secondary: linear-gradient(90deg, $gry-color-orange, $gry-color-pink, $gry-color-plum);
+$gry-button-fill-primary:     linear-gradient(90deg, $gry-color-plum 31.25%, $gry-color-pink-dark 100%);
+
+// Paints a fill (colour or gradient) inside a gradient border.
+@mixin gry-button-paint($fill, $border) {
+  @if type-of($fill) == 'color' {
+    $fill: linear-gradient($fill, $fill);
+  }
+
+  background: $fill padding-box, $border border-box;
+}
+
+// Shape, type and icon shared by both pills.
 @mixin gry-button-base {
   display: inline-flex;
   align-items: center;
   gap: 1.4rem;
   padding: 1.5rem 2.6rem 1.5rem 3rem;
-  border: 3px solid $gry-color-orange;
   border-radius: 999px;
   font-family: $gry-font-sans;
   font-size: 1.8rem;
   font-weight: 600;
   line-height: 1.2;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease;
 
-  // Trailing arrow (Figma "Icon / Arrow Right", 20x14), painted with
-  // currentColor so it follows the label colour.
+  // Trailing arrow (Figma "Icon / Arrow Right", 20x14).
   &::after {
     content: "";
     display: inline-block;
@@ -27,7 +42,6 @@
     width: 2rem;
     height: 1.4rem;
     margin: 0;
-    background-color: currentColor;
     mask: url('../assets/arrow-right.svg') no-repeat center / contain;
     transform: none;
   }
@@ -38,28 +52,64 @@
   }
 }
 
-@mixin gry-button--primary {
-  @include gry-button-base;
-
-  background: linear-gradient(90deg, $gry-color-plum 31.25%, $gry-color-pink-dark 100%);
+// Colours only: used on its own by the editor's Big Button, which keeps
+// Decanter's padding and type size.
+@mixin gry-button-colors--primary {
+  border: 3px solid transparent;
+  box-shadow: none;
+  @include gry-button-paint($gry-button-fill-primary, $gry-button-border-primary);
   color: $gry-color-white;
+
+  &::after {
+    background-color: $gry-color-white;
+  }
 
   &:hover,
   &:focus {
-    background: $gry-color-plum;
+    border-color: transparent;
+    box-shadow: none;
+    @include gry-button-paint($gry-color-plum, $gry-button-border-primary);
     color: $gry-color-white;
+
+    &::after {
+      background-color: $gry-color-white;
+    }
   }
+}
+
+@mixin gry-button-colors--secondary {
+  border: 3px solid transparent;
+  // Decanter's secondary button draws a red "border" with an inset box-shadow.
+  box-shadow: none;
+  @include gry-button-paint($gry-color-white, $gry-button-border-secondary);
+  color: $gry-color-navy;
+
+  &::after {
+    background-color: $gry-color-plum;
+  }
+
+  &:hover,
+  &:focus {
+    border-color: transparent;
+    box-shadow: none;
+    @include gry-button-paint($gry-color-plum, $gry-button-border-secondary);
+    color: $gry-color-white;
+
+    &::after {
+      background-color: $gry-color-white;
+    }
+  }
+}
+
+@mixin gry-button--primary {
+  @include gry-button-base;
+  @include gry-button-colors--primary;
+
+  padding-top: 1.6rem;
+  padding-bottom: 1.6rem;
 }
 
 @mixin gry-button--secondary {
   @include gry-button-base;
-
-  background: $gry-color-white;
-  color: $gry-color-navy;
-
-  &:hover,
-  &:focus {
-    background: $gry-color-navy;
-    color: $gry-color-white;
-  }
+  @include gry-button-colors--secondary;
 }
