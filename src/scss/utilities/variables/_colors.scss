@@ -18,7 +18,24 @@ $gry-color-orange:      #fdbe83; // brand/orange (button outline)
 $gry-color-cream:       #fde9cc; // brand/cream
 $gry-color-blue:        #2f4e68; // brand/blue
 $gry-color-section:     #f0e5ef; // fill/section/tertiary
-$gry-color-white:       #fff;    // surface/page, text/inverse
+$gry-color-white:       #fff;    // surface/page, text/inverse, primary/white
+
+// Lavendar tint scale (also referred to as plum-NN in design notes).
+// lavendar = brand/plum and lavendar-dark = lavendar-80 = brand/pink-dark.
+$gry-color-lavendar:      $gry-color-plum;      // #4a4b7b
+$gry-color-lavendar-dark: $gry-color-pink-dark; // #a98bad
+$gry-color-lavendar-10:   #f6f3f7;
+$gry-color-lavendar-15:   #f2eef3; // replaces the Plum Light section colour
+$gry-color-lavendar-20:   #eee8ef; // card gradient top
+$gry-color-lavendar-25:   #e9e2eb;
+$gry-color-lavendar-30:   #e5dce6;
+$gry-color-lavendar-40:   #ddd1de;
+$gry-color-lavendar-50:   #d4c5d6;
+$gry-color-lavendar-60:   #cbb9ce; // card gradient bottom, quote rule
+$gry-color-lavendar-70:   #c3aec6;
+$gry-color-lavendar-80:   $gry-color-pink-dark; // #a98bad
+$gry-color-lavendar-140:  #7d6e8d;
+$gry-color-lavendar-150:  #736785; // heading-link hover
 
 // Hero gradient stops (Section / Hero).
 $gry-hero-gradient: linear-gradient(

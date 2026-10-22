@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+// Section (Layout Paragraphs) background colour overrides.
+// stanford_layout_paragraphs adds .bg-[original hex] to .layout-background;
+// that class never changes, so these overrides are stable.
+.layout-background {
+  // Plum Light: #f2e8f1 -> lavendar-15 #f2eef3.
+  &.bg-f2e8f1 {
+    background-color: $gry-color-lavendar-15;
+  }
+}

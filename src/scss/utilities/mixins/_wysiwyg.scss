@@ -58,20 +58,36 @@
   // Figma "Quote": 3px left rule.
   .su-quote-text,
   blockquote {
-    border-left-color: $gry-color-navy;
+    border-left-color: $gry-color-lavendar-60;
+  }
+
+  // Styles menu "Card Text": same corner radius as the Card paragraph.
+  .su-related-text {
+    border-radius: 8px;
   }
 
   hr {
     border-color: $gry-color-plum-300;
   }
 
-  // Inline links (not buttons).
+  // Inline links (not buttons). Link icons (action, external, etc. are
+  // Decanter mask icons painted with background-color; mailto is an SVG)
+  // are brand plum in every state.
   a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
     color: $gry-color-navy;
     text-decoration: underline;
 
-    &::after {
-      background-color: currentColor;
+    &::after,
+    &:hover::after,
+    &:focus::after,
+    &[class*='su-link--']::before,
+    &[class*='su-link--']:hover::before,
+    &[class*='su-link--']:focus::before {
+      background-color: $gry-color-plum;
+    }
+
+    svg {
+      fill: $gry-color-plum;
     }
 
     &:hover,
@@ -80,18 +96,53 @@
     }
   }
 
-  // Editor button styles become the Guiroy pills.
-  a.su-button,
-  a.su-button--big {
-    @include gry-button--primary;
+  // Headings styled as links: text and icon plum, lavendar-150 on hover.
+  // The heading element in the selector outranks the inline-link rule.
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a:not(.su-button):not(.su-button--big):not(.su-button--secondary) {
+      color: $gry-color-plum;
+
+      &::after,
+      &[class*='su-link--']::before {
+        background-color: $gry-color-plum;
+      }
+
+      svg {
+        fill: $gry-color-plum;
+      }
+
+      &:hover,
+      &:focus {
+        color: $gry-color-lavendar-150;
+
+        &::after,
+        &[class*='su-link--']::before {
+          background-color: $gry-color-lavendar-150;
+        }
+
+        svg {
+          fill: $gry-color-lavendar-150;
+        }
+      }
+    }
   }
 
-  a.su-button--big {
-    padding: 1.8rem 3rem 2rem 3.4rem;
-    font-size: 2rem;
+  // Editor button styles become the Guiroy pills.
+  a.su-button {
+    @include gry-button--primary;
   }
 
   a.su-button--secondary {
     @include gry-button--secondary;
+  }
+
+  // Big Button: primary colours, Decanter's own padding and type size.
+  a.su-button--big {
+    @include gry-button-colors--primary;
   }
 }

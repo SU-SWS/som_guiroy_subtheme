@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+// Banner paragraph (stanford_banner), default style. The Gradient hero
+// variant has its own headline treatment in _banner--hero.scss.
+// Headline: Regular weight at Decanter's type-1, i.e. modular-typography(1):
+// one step up the 1.25 modular scale from the responsive base (~24px at xl,
+// Figma "type-1 (24)").
+.ptype-stanford-banner:not(.gry-banner--hero) .su-hero__card {
+  h2,
+  h3 {
+    @include modular-typography(1);
+    font-weight: 400;
+  }
+}
